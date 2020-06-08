@@ -20,6 +20,7 @@ namespace TestNinja.UnitTests
         }
 
         [Test]
+        [Ignore("Zignorowany bo tak")]
         public void Add_WhenCalled_ReturnTheSumOfArguments()
         {
             var result = _math.Add(1,2);
@@ -28,28 +29,14 @@ namespace TestNinja.UnitTests
         }
 
         [Test]
-        public void Sum_FirstArgumentGreater_ReturnFirstArgument()
+        [TestCase(2,1,2)]
+        [TestCase(1,2,2)]
+        [TestCase(1,1,1)]
+        public void Max_WhenCalled_ReturnGreaterArgument(int a, int b, int expectedResult)
         {
-            var result = _math.Max(2,1);
+            var result = _math.Max(a,b);
 
-            Assert.That(result,Is.EqualTo(2));
+            Assert.That(result,Is.EqualTo(expectedResult));
         }
-
-        [Test]
-        public void Sum_SecondArgumentGreater_ReturnSecondArgument()
-        {
-            var result = _math.Max(1,2);
-
-            Assert.That(result,Is.EqualTo(2));
-        }
-
-        [Test]
-        public void Sum_BothArgumentsEquall_ReturnFirstArgument()
-        {
-            var result = _math.Max(1,1);
-
-            Assert.That(result,Is.EqualTo(1));
-        }
-
     }
 }
