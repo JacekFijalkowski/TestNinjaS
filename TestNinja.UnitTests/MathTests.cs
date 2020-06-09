@@ -20,7 +20,7 @@ namespace TestNinja.UnitTests
         }
 
         [Test]
-        [Ignore("Zignorowany bo tak")]
+        //[Ignore("Zignorowany bo tak")]
         public void Add_WhenCalled_ReturnTheSumOfArguments()
         {
             var result = _math.Add(1,2);
@@ -37,6 +37,14 @@ namespace TestNinja.UnitTests
             var result = _math.Max(a,b);
 
             Assert.That(result,Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        public void GetOddNumbers_WhenCalled_ReturnOddNumbers()
+        {
+            var result = _math.GetOddNumbers(5);
+
+            Assert.That(result, Is.EquivalentTo(new [] {1,3,5}));
         }
     }
 }
